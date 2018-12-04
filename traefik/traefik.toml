@@ -1,0 +1,52 @@
+debug = true
+
+logLevel = "INFO"
+defaultEntryPoints = ["https","http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+
+  [entryPoints.https]
+  address = ":443"
+  compress = true
+  [entryPoints.https.tls]
+
+  [entryPoints.ping]
+  address = ":8082"
+
+  [entryPoints.traefik-dashboard]
+  address = ":8080"
+    [entryPoints.traefik-dashboard.auth.basic]
+      users = [
+        "TODO-env"
+      ]
+
+[ping]
+entryPoint = "ping"
+
+[api]
+entryPoint = "traefik-dashboard"
+dashboard = true
+debug = false
+  [api.statistics]
+  recentErrors = 10
+
+[retry]
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+watch = true
+exposedByDefault = false
+swarmMode = true
+
+[acme]
+email = "TODO-env"
+storage = "acme.json"
+entryPoint = "https"
+onDemand = true
+onHostRule = true
+[acme.httpChallenge]
+ entryPoint = "http"

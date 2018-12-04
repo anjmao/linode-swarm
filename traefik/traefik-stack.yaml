@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  traefik:
+    image: traefik:1.7.4
+    environment:
+      - LINODE_TOKEN=<TOKEN>
+    deploy:
+      placement:
+        constraints: [node.role==manager]
+      labels:
+        - "traefik.backend.loadbalancer.stickiness.cookieName=S_SESSION"
+        - "traefik.backend.loadbalancer.stickiness=true"
+        - "traefik.docker.network=traefik"
+        - "traefik.enable=true"
+        - "traefik.backend=traefik-dashboard"
+        - "traefik.frontend.rule=Host:traefik.devx.lt"
+        - "traefik.frontend.passHostHeader=true"
+        - "traefik.port=8080"
+    ports:
+      - 80:80
+      - 443:443
+      - 8082:8082
+    networks:
+      - default
+      - traefik
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/anjmao/traefik.toml:/traefik.toml
+      - /home/anjmao/acme.json:/acme.json
+networks:
+  traefik:
+    external: true
