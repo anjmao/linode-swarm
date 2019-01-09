@@ -23,7 +23,7 @@ Before deployment
 2. Replace Lets Encrypt email in traefik.toml
 3. Generate more secure password for traefik dashboard and put it in traefik.toml
 
-To deploy
+Deploy Traefik
 
 ```shell
 cd traefik
@@ -31,6 +31,12 @@ cd traefik
 docher-machine ssh master01
 cd /traefik
 ./install.sh
+```
+
+Deploy test app
+
+```shell
+docker stack deploy -c whoami-stack.yaml whoami
 ```
 
 ## Dependencies
