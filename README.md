@@ -15,6 +15,24 @@ git clone git@github.com:anjmao/linode-swarm.git
 ./install.sh
 ```
 
+## Traefik deployment
+
+Before deployment
+
+1. Replace Host in traefik-stack.yaml
+2. Replace Lets Encrypt email in traefik.toml
+3. Generate more secure password for traefik dashboard and put it in traefik.toml
+
+To deploy
+
+```shell
+cd traefik
+./copy.sh
+docher-machine ssh master01
+cd /traefik
+./install.sh
+```
+
 ## Dependencies
 
 1. docker

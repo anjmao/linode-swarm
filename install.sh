@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source ./util/spinner.sh
 source ./node/node.sh
 source ./swarm/swarm.sh

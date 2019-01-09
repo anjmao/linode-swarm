@@ -1,10 +1,8 @@
-version: '3.3'
+version: "3.3"
 
 services:
   traefik:
-    image: traefik:1.7.4
-    environment:
-      - LINODE_TOKEN=<TOKEN>
+    image: traefik:1.7.7
     deploy:
       placement:
         constraints: [node.role==manager]
@@ -26,8 +24,8 @@ services:
       - traefik
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/anjmao/traefik.toml:/traefik.toml
-      - /home/anjmao/acme.json:/acme.json
+      - /traefik/traefik.toml:/traefik.toml
+      - /traefik/acme.json:/acme.json
 networks:
   traefik:
     external: true

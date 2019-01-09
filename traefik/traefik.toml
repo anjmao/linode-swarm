@@ -21,7 +21,7 @@ defaultEntryPoints = ["https","http"]
   address = ":8080"
     [entryPoints.traefik-dashboard.auth.basic]
       users = [
-        "TODO-env"
+        "admin:$$apr1$$K1fAfADL$$gc7VPZAkhX.QtbiHRBbEC0"
       ]
 
 [ping]
@@ -43,7 +43,7 @@ exposedByDefault = false
 swarmMode = true
 
 [acme]
-email = "TODO-env"
+email = "info@devx.lt"
 storage = "acme.json"
 entryPoint = "https"
 onDemand = true
