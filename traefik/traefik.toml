@@ -20,9 +20,7 @@ defaultEntryPoints = ["https","http"]
   [entryPoints.traefik-dashboard]
   address = ":8080"
     [entryPoints.traefik-dashboard.auth.basic]
-      users = [
-        "admin:$$apr1$$K1fAfADL$$gc7VPZAkhX.QtbiHRBbEC0"
-      ]
+      users = ["test:$2y$05$Zn7/0qFn67E/duVpahg7A.B3s24JV0IQTMOACNuzKSiMrkt2GSBBu"]
 
 [ping]
 entryPoint = "ping"

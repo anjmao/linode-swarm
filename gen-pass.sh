@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo $(htpasswd -nb admin admin) | sed -e s/\\$/\\$\\$/g
+echo $(htpasswd -nbB test test)
