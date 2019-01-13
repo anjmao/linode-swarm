@@ -11,5 +11,7 @@ create_node() {
     --linode-token=$LINODE_TOKEN \
     --linode-root-pass=$LINODE_ROOT_PASSWORD \
     --linode-create-private-ip \
+    --tls-san 127.0.0.1 \
+    --tls-san $HOST_NAME \
     $name
 }
